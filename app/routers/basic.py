@@ -42,17 +42,23 @@ def multiple_params(
 # Validation of params and queryParams.
 # If it fails, FastAPI rejects it before calling the handlder
 @router.get("/user-details/{user_id}")
-def return_username(
+def get_user_detais(
   user_id: int = Path(ge=1),
   role: str = Query(min_length=3, max_length=10),
   slug: str = Query(pattern="^[a-zA-Z0-9_]+$"),
   logs: int = Query(default=10, ge=1, le=100),
-  order_status: OrderStatus = OrderStatus.PENDING
+  order_status: OrderStatus = OrderStatus.PENDING,
+  email: str | None = Query(
+    default=None,
+    # "+" allowed for aliases like user+2@gmail.com
+    pattern=r"^[\w.+-]+@[\w-]+(\.[\w-]+)+$",
+  ),
 ):
   return {
     "username": user_id,
     "role": role,
     "slug": slug,
     "logs": logs,
-    "order_status": order_status
+    "order_status": order_status,
+    "email": email,
   }
