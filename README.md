@@ -1,6 +1,6 @@
 # FastAPI - 101
 
-Learn concepts and working of [FastAPI](https://fastapi.tiangolo.com) from basicsto production level code
+Learn concepts and working of [FastAPI](https://fastapi.tiangolo.com) from basics to production level code
 
 ## Setup
 
@@ -28,4 +28,5 @@ uvicorn app.main:app --reload
 This runs the server on [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
 **Swagger** - [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+
 **Redoc** - [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)

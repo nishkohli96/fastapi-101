@@ -1,6 +1,6 @@
 [project]
-name = "@nish1896/fastapi-101"
-version = "1.0.0"
+name = "fastapi-101"
+version = "1.1.0"
 description = "Learn FastAPI from basic to advanced."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -16,3 +16,6 @@ keywords = [
 	"programming",
 	"fastapi"
 ]
+
+[tool.ruff]
+indent-width = 2
