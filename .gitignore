@@ -1,0 +1,15 @@
+# Virtual Environments
+.venv
+.venv.*
+
+# Misc
+.DS_Store
+__pycache__
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Claude AI Skills
+graft
