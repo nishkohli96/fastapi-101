@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Path
+from fastapi import APIRouter, Path, status
 from pydantic import BaseModel, Field
 
 router = APIRouter(prefix="/mutation")
@@ -27,7 +27,8 @@ class UpdateProduct(BaseModel):
   supplier: Supplier
 
 
-@router.post("/create-product")
+# For successful responses, "201" status code will be returned
+@router.post("/create-product", status_code=status.HTTP_201_CREATED)
 async def create_product(product: ProductCreate):
   return product
 

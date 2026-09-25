@@ -9,6 +9,8 @@ app = FastAPI(
   # As docs & redoc heading and tab title
   title="FastAPI-101",
   description="Learn FastAPI - from basics to advanced.",
+  # Default version is 0.1.0
+  version="1.1.0"
 )
 
 

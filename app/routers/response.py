@@ -1,4 +1,5 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, status
+from fastapi.responses import JSONResponse
 
 # EmailStr needs to be installed separately using
 # pip3 install "pytantic[email]"
@@ -31,7 +32,21 @@ router = APIRouter()
 @router.post("/users/create", response_model=ApiResponse[UserCreate])
 def create_user(user_details: UserCreate):
   return ApiResponse(
-    status_code=201,
+    status_code=status.HTTP_201_CREATED,
     message="User created",
     data=user_details,
+  )
+
+
+@router.get("/error")
+def return_error():
+  return JSONResponse(
+    status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+    # This object is returned when I hit this endpoint in the browser
+    # I also returned a string value in the content and it worked.
+    content={
+      "success": False,
+      "message": "An error occured on the server",
+      "data": None,
+    },
   )
