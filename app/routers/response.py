@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
 
@@ -22,6 +24,7 @@ class UserCreate(BaseModel):
   age: int = Field(ge=18)
   password: str = Field(min_length=8)
   address: AddressDetails
+  created_at: datetime
 
 
 router = APIRouter(tags=["Response"])
@@ -31,6 +34,12 @@ router = APIRouter(tags=["Response"])
 # (not a dict) lets the type checker flag unknown or mistyped fields.
 #
 # Just like request models, response models can be nested.
+#
+# FastAPI also has,
+# - response_model_exclude={"password_hash"}
+# - response_model_include={"id", "name"}
+#
+# But avoid using them and explicitly define response schemas
 @router.post("/users/create", response_model=ApiResponse[UserCreate])
 def create_user(user_details: UserCreate):
   return ApiResponse(
