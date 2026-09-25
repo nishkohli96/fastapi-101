@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Path, status
 from pydantic import BaseModel, Field
 
-router = APIRouter(prefix="/mutation")
+router = APIRouter(prefix="/mutation", tags=["Mutation"])
 
 
 class ProductCreate(BaseModel):

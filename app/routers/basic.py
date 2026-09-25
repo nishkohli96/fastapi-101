@@ -8,8 +8,10 @@ class OrderStatus(Enum):
   COMPLETED = "completed"
   CANCELLED = "cancelled"
 
-
-router = APIRouter(prefix="/basic")
+# You can specify the tags, so that routes can be grouped
+# based on the purpose they server, instead of all routes
+# appearing in the "default" section in Swagger & Redoc.
+router = APIRouter(prefix="/basic", tags=["Basic"])
 
 
 # param_id is url param, whereas catgeory & limit are query params

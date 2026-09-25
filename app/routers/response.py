@@ -24,11 +24,13 @@ class UserCreate(BaseModel):
   address: AddressDetails
 
 
-router = APIRouter()
+router = APIRouter(tags=["Response"])
 
 
 # Return annotation doubles as response_model, and returning the model
 # (not a dict) lets the type checker flag unknown or mistyped fields.
+#
+# Just like request models, response models can be nested.
 @router.post("/users/create", response_model=ApiResponse[UserCreate])
 def create_user(user_details: UserCreate):
   return ApiResponse(
